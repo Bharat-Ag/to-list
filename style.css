@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sassy+Frass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sassy+Frass&display=swap');
 
 * {
     margin: 0;
@@ -25,6 +25,7 @@
 body {
     background: var(--primary-clr);
     color: var(--txt-clr);
+    transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .container {
@@ -40,7 +41,7 @@ body {
     padding: 20px;
     font-size: 1.5rem;
     color: var(--txt-clr);
-    height: 80px;
+    /* height: 80px; */
     position: sticky;
     top: 0;
     z-index: 99;
@@ -63,17 +64,17 @@ a {
 
 .social_media {
     color: var(--txt-clr);
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.social_media .theme{
+.social_media .theme {
     border-left: 2px solid rgba(255, 255, 255, 0.294);
     padding-left: 10px;
 }
 
-.social_media .theme i{
+.social_media .theme i {
     cursor: pointer;
 }
 
@@ -153,20 +154,21 @@ a {
     width: 100%;
     padding: 20px;
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
     gap: 20px;
-    /* flex-grow: 1; */
-
+    position: relative;
+    min-height: 100vh;
 }
 
-.nt-placeholder{
+.nt-placeholder {
     opacity: .4;
     font-size: 1.3rem;
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     pointer-events: none;
     user-select: none;
 }
@@ -179,6 +181,7 @@ a {
     flex-direction: column;
     border-radius: 2px;
     overflow: hidden;
+    border: 1.5px solid transparent;
 }
 
 .opration {
@@ -190,14 +193,12 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid red;
 }
 
 .opration h3 {
     margin-left: 10px;
     padding: 0;
     font-weight: bolder;
-    border: 2px solid red;
 }
 
 .opration i {
@@ -255,18 +256,97 @@ a {
 .footer h1 {
     text-transform: capitalize;
     font-size: 0.9rem;
+    font-weight: lighter;
+    letter-spacing: .2rem;
 
 }
 
 .footer h3 {
-    text-transform: capitalize;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-top: 5px;
+    font-weight: 500;
 }
 
 .footer span {
     text-transform: capitalize;
     font-size: 0.7rem;
-    margin-top: 20px;
+    margin-top: 10px;
+    font-weight: 100;
+}
 
+
+
+
+/* theme changing  */
+
+body.light_mode .btn {
+    color: var(--txt-clr);
+}
+
+body.light_mode .social_media .theme {
+    border-left: 2px solid rgba(0, 0, 0, 0.294);
+}
+
+body.light_mode .note {
+    border: 1.5px solid rgb(245, 245, 245);
+}
+
+body.light_mode .opration {
+    background: var(--primary-clr);
+    outline: 1px solid red;
+}
+
+body.light_mode textarea {
+    background: rgb(255, 255, 163);
+}
+
+
+
+/* delete custom modal */
+
+
+.dlt-modal {
+    width: 250px;
+    height: 110px;
+    position: absolute;
+    background-color: var(--txt-clr);
+    color: var(--pure-blk);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    top: 50%;
+    left: 50%;
+    transform: scale(0) translate(-50%, -50%);
+    pointer-events: auto;
+    transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dlt-modal span {
+    margin-bottom: 10px;
+
+}
+
+.dlt-modal button {
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-size: 1.52rem;
+    width: 90px;
+    margin: 0 5px;
+    cursor: pointer;
+
+}
+
+.dlt-modal #dlt-yes {
+    background: red;
+    color: var(--txt-clr);
+}
+
+.dlt-modal #dlt-no {
+    background: rgb(16, 232, 55);
+    color: var(--txt-clr);
 }
