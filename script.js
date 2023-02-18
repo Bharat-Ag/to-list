@@ -1,21 +1,16 @@
-let noteBtn = document.querySelector(".btn")
-
-
+let noteBtn = document.querySelector(".btn");
 let ntPlaceholder = document.querySelector(".nt-placeholder");
 
 
 let addNewNote = (text = '') => {
 
+    let pDiv = document.querySelector(".nt-container");
     ntPlaceholder.style.display = "none";
 
-    let pDiv = document.querySelector(".nt-container")
     let note = document.createElement('div');
     note.classList.add("note");
-    let htmlData = `
-                
-    
-            
-             <div class="opration">
+    let htmlData = `         
+            <div class="opration">
                 <h3>Title</h3>
                 <div class="alert">
                       <button class="edit" title="create new note">
@@ -36,18 +31,12 @@ let addNewNote = (text = '') => {
 
     let delBtn = note.querySelector('.del-icon');
     delBtn.addEventListener("click", () => {
-
         note.remove()
+
+        if (pDiv.children.length == 1) {
+            ntPlaceholder.style.display = "block";
+        }
     })
-
-
-
-
-    
-
-
-
-
 
     pDiv.appendChild(note);
 
@@ -57,47 +46,9 @@ noteBtn.addEventListener("click", () =>
 );
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ---------------dynamic footer year 
 
 let year = document.querySelector(".year");
- let newDate = new Date().getFullYear();
- year.innerHTML = newDate;
+let newDate = new Date().getFullYear();
+year.innerHTML = newDate;
 
