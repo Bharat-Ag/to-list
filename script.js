@@ -9,7 +9,7 @@ let addNewNote = (text = '') => {
 
     let note = document.createElement('div');
     note.classList.add("note");
-    let htmlData = `         
+    let htmlData = `   
             <div class="opration">
                 <h3>Title</h3>
                 <div class="alert">

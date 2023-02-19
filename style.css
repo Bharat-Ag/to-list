@@ -29,6 +29,7 @@ a {
 body {
     min-height: 100vh;
     background: var(--primary-clr);
+    overflow-x: hidden;
 }
 
 .navbar {
@@ -69,6 +70,9 @@ body {
     padding-left: 20px;
 }
 
+.header .theme i{
+    cursor: pointer;
+}
 
 
 /*--------------------------------------- button adding  */
