@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sassy+Frass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Poppins:wght@200;300;400;500&family=Satisfy&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 :root {
@@ -12,7 +12,6 @@
     --head-clr: rgb(17, 21, 40);
     --txt-clr: white;
     --pure-blk: #000000;
-
 }
 
 .light_mode {
@@ -22,83 +21,80 @@
     --pure-blk: #fff;
 }
 
-body {
-    background: var(--primary-clr);
+a {
+    text-decoration: none;
     color: var(--txt-clr);
-    transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.container {
+body {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    background: var(--primary-clr);
+}
+
+.navbar {
+    width: 100vw;
+    background: var(--head-clr);
+    padding: 10px;
+    font-size: 1.5rem;
+    transition: all .1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
 }
 
 .header {
-    background: var(--head-clr);
-    width: 100vw;
-    padding: 20px;
-    font-size: 1.5rem;
-    color: var(--txt-clr);
-    /* height: 80px; */
-    position: sticky;
-    top: 0;
-    z-index: 99;
+    margin: 0 auto;
+    max-width: 950px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-a {
-    text-decoration: none;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--txt-clr);
 }
 
 .header span {
-    font-family: 'Sassy Frass', cursive;
+    font-family: 'Satisfy', cursive;
 }
 
-.header_logo {
-    margin-right: 15px;
+.header h3 {
+    font-family: 'Fugaz One', cursive;
 }
 
-.social_media {
-    color: var(--txt-clr);
+.header .social_media {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    gap: 25px;
 }
 
-.social_media .theme {
-    border-left: 2px solid rgba(255, 255, 255, 0.294);
-    padding-left: 10px;
+.header .theme {
+    border-left: 1.2px solid rgba(255, 255, 255, 0.31);
+    padding-left: 20px;
 }
 
-.social_media .theme i {
-    cursor: pointer;
-}
 
-.social_media a {
-    margin: 0 5px;
-}
 
-.social_media i {
-    color: var(--txt-clr);
-    margin: 0 10px;
+/*--------------------------------------- button adding  */
+
+
+.adding_noting {
+    display: flex;
+    justify-content: flex-end;
+    padding: 13px 0;
 }
 
 .btn {
+    width: 180px;
+    height: 40px;
+    font-size: 1.3rem;
     position: relative;
-    padding: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     color: var(--txt-clr);
-    padding-left: 40px;
     transition: all .8s;
-    margin: 15px 20px 15px auto;
+    padding: 0 10px 0 40px;
+    margin: 10px 20px 10px auto;
 }
 
 .btn:hover .circle {
@@ -116,8 +112,6 @@ a {
 
 .btn .add {
     cursor: pointer;
-    width: 20px;
-    height: 20px;
     border: none;
     outline: none;
     position: relative;
@@ -127,17 +121,13 @@ a {
     position: absolute;
 }
 
-.btn span {
-    user-select: none;
-}
-
 .btn .circle {
     transition: all .8s;
     position: absolute;
     left: 0;
     background: rgb(0, 255, 191);
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -147,18 +137,21 @@ a {
 
 .circle .arrow {
     transition: all .2s;
-    margin: 7px;
+    margin: 10px;
 }
 
+
+/* note cell */
+
 .nt-container {
-    width: 100%;
+    width: 100vw;
     padding: 20px;
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
     gap: 20px;
     position: relative;
-    min-height: 100vh;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .nt-placeholder {
@@ -182,6 +175,7 @@ a {
     border-radius: 2px;
     overflow: hidden;
     border: 1.5px solid transparent;
+
 }
 
 .opration {
@@ -242,7 +236,6 @@ a {
 }
 
 
-
 .footer {
     display: flex;
     align-items: center;
@@ -251,6 +244,7 @@ a {
     width: 100vw;
     background: var(--head-clr);
     padding: 20px 0;
+    color: var(--txt-clr);
 }
 
 .footer h1 {
@@ -322,6 +316,8 @@ body.light_mode textarea {
     transform: scale(0) translate(-50%, -50%);
     pointer-events: auto;
     transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: none;
+
 }
 
 .dlt-modal span {
