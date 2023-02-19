@@ -317,16 +317,13 @@ body.light_mode textarea {
     gap: 10px;
     top: 50%;
     left: 50%;
-    transform: scale(0) translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0) ;
     pointer-events: auto;
     transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    display: none;
-
 }
 
 .dlt-modal span {
     margin-bottom: 10px;
-
 }
 
 .dlt-modal button {

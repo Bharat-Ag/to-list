@@ -30,12 +30,28 @@ let addNewNote = (text = '') => {
 
     let delBtn = note.querySelector('.del-icon');
     delBtn.addEventListener("click", () => {
-        let dltModal = document.querySelector(".dlt-modal");
-        let modalBtn = dltModal.querySelectorAll("button");
 
-        dltModal.style.transform = "scale(1)";
-        dltModal.style.transform = "translate(-50% ,-50%)";
+        // let dltModal = document.querySelector(".dlt-modal");
+        // let modalBtn = dltModal.querySelectorAll("button");
 
+        // dltModal.style.transform = "scale(1)";
+        // dltModal.style.transform = "translate(-50% ,-50%)";
+
+
+        // modalBtn.forEach((btn) => {
+        //     btn.addEventListener("click", () => {
+        //         if (btn.id == "dlt-yes") {
+        //             dltModal.style.transform = "scale(0)"
+        //             note.remove()
+
+        //         } else {
+        //             dltModal.style.transform = "scale(0)";
+        //         }
+
+        //     })
+        // })
+        
+        
         note.remove()
 
 
@@ -58,13 +74,14 @@ noteBtn.addEventListener("click", () =>
 
 let themeBtn = document.querySelector(".thm-btn")
 let body = document.querySelector("body");
+
 themeBtn.addEventListener("click", () => {
 
-    body.classList.toggle("light_mode")
-    themeBtn.classList.toggle("fa-moon")
+    body.classList.toggle("light_mode");
+    themeBtn.classList.toggle("fa-moon");
 
 })
- 
+
 // ---------------dynamic footer year 
 
 let year = document.querySelector(".year");
