@@ -21,7 +21,6 @@ let addNewNote = (text = '') => {
                       </button>
                  </div>
             </div>
-
             <div class="writing ">
                 <textarea class="text" spellcheck="true" placeholder="write your notes here.."></textarea>
             </div>`;
@@ -65,19 +64,9 @@ themeBtn.addEventListener("click", () => {
     themeBtn.classList.toggle("fa-moon")
 
 })
-
-
-
-
-
-
-
-
-
-
+ 
 // ---------------dynamic footer year 
 
 let year = document.querySelector(".year");
 let newDate = new Date().getFullYear();
 year.innerHTML = newDate;
-
