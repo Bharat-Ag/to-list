@@ -70,4 +70,3 @@ themeBtn.addEventListener("click", () => {
 let year = document.querySelector(".year");
 let newDate = new Date().getFullYear();
 year.innerHTML = newDate;
-
