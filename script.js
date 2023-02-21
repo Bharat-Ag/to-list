@@ -44,24 +44,17 @@ nt_btn.addEventListener("click", () => {
 })
 
 
-// // ---------------theme changing
+// ---------------theme changing
 
-// let themeBtn = document.querySelector(".thm-btn")
-// let body = document.querySelector("body");
-// themeBtn.addEventListener("click", () => {
+let thmBtn = document.querySelector(".thm-btn")
+let body = document.querySelector("body")
+thmBtn.addEventListener('click', () => {
 
-//     body.classList.toggle("light_mode")
-//     themeBtn.classList.toggle("fa-moon")
+    let thmLogo = thmBtn.querySelector(".fa-sun")
 
-// })
-
-
-
-
-
-
-
-
+    body.classList.toggle("theme-changed")
+    thmLogo.classList.toggle("fa-moon")
+})
 
 
 // // ---------------dynamic footer year 
