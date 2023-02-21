@@ -12,67 +12,80 @@
 </head>
 
 <body>
+
     <div class="container">
+
+
+        <!---------- Navbar-->
+
         <div class="navbar">
             <div class="header">
-                <h3>
-                    <i class="header_logo fa-solid fa-pencil"></i>
-                    My <span>Notes</span>
-                </h3>
-
-                <div class="social_media">
-                    <a href="https://www.linkedin.com/in/bharatagrawal02" target="_blank" title="Linkedin">
-                        <i class="fa-brands fa-linkedin"></i>
+                <div class="branding">
+                    <a href="#">
+                        <div class="logo">
+                            <i class="fa-solid fa-pencil"></i>
+                        </div>
+                        <div class="brand">
+                            My <span>Note</span>
+                        </div>
                     </a>
-                    <a href="https://github.com/Bharat-Ag" target="_blank" title="Github">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="#" target="_blank" title="portfolio">
-                        <i class="fa-solid fa-earth-asia"></i>
-                    </a>
-                    <div class="theme" title="chnage theme">
-                        <i class="thm-btn fa-solid fa-bolt"></i>
-                    </div>
+                </div>
+                <div class="follow">
+                    <ul>
+                        <li>
+                            <a href="https://www.linkedin.com/in/bharatagrawal02" title="linkedin">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/Bharat-Ag" title="github">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://bharat-ag.github.io/Porfotlio/" title="portfolio">
+                                <i class="fa-solid fa-earth-asia"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="thm-btn">
+                        <li>
+                            <i class="fa-regular fa-sun"></i>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!--------------adding note button -->
-        <div class="adding_noting">
-            <div class="btn">
-                <button class="add" id="add"></button>
-                <span class="circle">
-                    <i class="arrow fa-solid fa-arrow-right"></i>
-                </span>
-                <span class="button-text">Add Note</span>
+
+        <!---------- adding button -->
+        <div class="adding-container">
+            <div class="adding-note">
+                <button class="add-btn">
+                    <i class="nt-btn-icon fa-solid fa-arrow-right"></i>
+                    <span>Add Note</span>
+                </button>
             </div>
         </div>
 
-        <!--------------adding note div -->
-        <div class="nt-container">
-            <h1 class="nt-placeholder">Create New Note</h1>
+        <!---------- Note Field -->
+
+
+        <div class="note-field">
+            <span class="note-placeholder">Create New Note</span>
+
         </div>
-        <!-- <div class="dlt-modal">
-            <span>Are you sure to delete ?</span>
-            <div class="alert">
-                <button id="dlt-yes">
-                    <i class="fa-solid fa-check"></i>
-                </button>
-                <button id="dlt-no">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+
+        <!---------- footer -->
+
+        <footer>
+            <div class="footer">
+                <span>Hope You Liked It</span>
+                <h3>Copyrighted to Bharat Agrawal - <span>
+                        Front-End Developer
+                    </span> </h3>
+                <span>&copy; <span id="cc-date">2000</span></span>
             </div>
-        </div> -->
+        </footer>
+
     </div>
-    <footer>
-        <div class="footer">
-            <h1>Hope Your Enjoyed</h1>
-            <h3>Copyrighted to Bharat Agrawal</h3>
-            <span> &copy; <span class="year"> 2000</span></span>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
