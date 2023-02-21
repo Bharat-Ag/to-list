@@ -1,349 +1,266 @@
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Poppins:wght@200;300;400;500&family=Satisfy&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Sora:wght@100;300;500&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Sora', sans-serif;
+  }
 
-:root {
-    --primary-clr: rgb(26, 33, 43);
-    --head-clr: rgb(17, 21, 40);
-    --txt-clr: white;
-    --pure-blk: #000000;
-}
+  :root {
+      --pure-white: white;
+      --pure-black: black;
+      --primary-clr: rgb(13, 16, 41);
+      --fx-clr: green;
+      --nt-header-: rgb(67, 66, 69);
+  }
 
-.light_mode {
-    --primary-clr: white;
-    --head-clr: rgb(255, 255, 0);
-    --txt-clr: rgb(0, 0, 0);
-    --pure-blk: #fff;
-}
+  .theme-changed {
+      --pure-white: rgb(0, 0, 0);
+      --pure-black: rgb(255, 255, 255);
+  }
 
-a {
-    text-decoration: none;
-    color: var(--txt-clr);
-}
+  body {
+      background: var(--primary-clr);
+  }
 
-body {
-    min-height: 100vh;
-    background: var(--primary-clr);
-    overflow-x: hidden;
-}
+  .container {
+      min-height: 100vh;
+      color: var(--pure-white);
+      background: none;
+  }
 
-.navbar {
-    width: 100vw;
-    background: var(--head-clr);
-    padding: 10px;
-    font-size: 1.5rem;
-    transition: all .1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-}
+  a {
+      text-decoration: none;
+      color: var(--pure-white);
+  }
 
-.header {
-    margin: 0 auto;
-    max-width: 950px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    color: var(--txt-clr);
-}
+  li {
+      list-style: none;
+  }
 
-.header span {
-    font-family: 'Satisfy', cursive;
-}
+  button {
+      outline: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--pure-white);
+  }
 
-.header h3 {
-    font-family: 'Fugaz One', cursive;
-}
+  .navbar {
+      width: 100vw;
+      backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+  }
 
-.header .social_media {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-}
+  .header {
+      font-size: 1.4rem;
+      padding: 10px 20px;
+      margin: 0 auto;
+      max-width: 550px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
 
-.header .theme {
-    border-left: 1.2px solid rgba(255, 255, 255, 0.31);
-    padding-left: 20px;
-}
+  .branding {
+      padding: 0px 6px;
+      font-size: 1.4rem;
+  }
 
-.header .theme i{
-    cursor: pointer;
-}
+  .branding a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
 
+  .logo {
+      margin-right: 10px;
+  }
 
-/*--------------------------------------- button adding  */
+  .brand span {
+      font-family: 'Satisfy', cursive;
+  }
 
+  .follow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
 
-.adding_noting {
-    display: flex;
-    justify-content: flex-end;
-    padding: 13px 0;
-}
+  ul li a {
+      margin: 0 6px;
+  }
 
-.btn {
-    width: 180px;
-    height: 40px;
-    font-size: 1.3rem;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: var(--txt-clr);
-    transition: all .8s;
-    padding: 0 10px 0 40px;
-    margin: 10px 20px 10px auto;
-}
+  .thm-btn {
+      margin-left: 8px;
+      border-left: 1.5px solid rgba(255, 255, 255, 0.2);
+      padding-left: 10px;
+  }
 
-.btn:hover .circle {
-    color: green;
-    width: 100%;
-}
+  .thm-btn i {
+      cursor: pointer;
+  }
 
-.btn:hover {
-    color: var(--pure-blk);
-}
+  /* -----btn desgn-------- */
+  .adding-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 20px;
+      padding-right: 30px;
+  }
 
-.btn:hover .arrow {
-    margin: 10%;
-}
+  .adding-note {
+      border-radius: 50px;
+      overflow: hidden;
+      background: none;
+  }
 
-.btn .add {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    position: relative;
-    background: transparent;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
+  .add-btn {
+      padding: 13px 20px;
+      position: relative;
+      font-size: 1.1rem;
+  }
 
-.btn .circle {
-    transition: all .8s;
-    position: absolute;
-    left: 0;
-    background: rgb(0, 255, 191);
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    color: #000000;
-    z-index: -1;
-}
-
-.circle .arrow {
-    transition: all .2s;
-    margin: 10px;
-}
+  .add-btn::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 3px;
+      height: 100%;
+      width: 29%;
+      background-color: aqua;
+      border-radius: 50px;
+      transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: -1;
+  }
 
 
-/* note cell */
+  .add-btn:hover span {
+      color: var(--pure-black);
+      margin-left: 10px;
+  }
 
-.nt-container {
-    width: 100vw;
-    padding: 20px;
-    display: flex;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    min-height: 100vh;
-}
+  .add-btn:hover i {
+      color: rgb(255, 47, 123);
+      margin: 0 6px 0 5px;
+      transform-origin: center;
+      transform: rotate(45deg);
+  }
 
-.nt-placeholder {
-    opacity: .4;
-    font-size: 1.3rem;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    user-select: none;
-}
+  .add-btn:hover::after {
+      background-color: aqua;
+      width: 100%;
+  }
 
-.note {
-    width: 250px;
-    height: 170px;
-    background: var(--txt-clr);
-    display: flex;
-    flex-direction: column;
-    border-radius: 2px;
-    overflow: hidden;
-    border: 1.5px solid transparent;
+  .add-btn span {
+      color: var(--pure-white);
+      transition: all .9s cubic-bezier(0.19, 1, 0.22, 1);
+      margin-left: 20px;
+  }
 
-}
+  .add-btn i {
+      color: var(--pure-black);
+      transition: all .9s cubic-bezier(0.19, 1, 0.22, 1);
+  }
 
-.opration {
-    width: 100%;
-    padding: 4px 0;
-    padding-right: 10px;
-    border-bottom: .5px solid rgba(0, 0, 0, 0.099);
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+  /* -------note field------- */
+  .note-field {
+      min-height: 100vh;
+      width: 100vw;
+      margin-top: 40px;
+      padding: 25px 80px;
+      display: flex;
+      align-content: flex-start;
+      flex-wrap: wrap;
+      gap: 17px;
+      position: relative;
+  }
 
-.opration h3 {
-    margin-left: 10px;
-    padding: 0;
-    font-weight: bolder;
-}
+  .note-placeholder {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.4;
+  }
 
-.opration i {
-    font-size: 1.2rem;
-    margin: auto 0;
-}
+  .note {
+      border-radius: 7px;
+      overflow: hidden;
+      width: 280px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      background-color: var(--nt-header-);
+  }
 
-.opration button {
-    float: right;
-    margin-left: 15px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: transparent;
-}
+  .nt-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-basis: 25%;
+      padding: 0 10px 0 20px;
+  }
 
-.opration .del-icon:hover {
-    color: red;
-}
+  .nt-header h3 {
+      letter-spacing: .2rem;
+      font-weight: bold;
+      cursor: default;
+      width: 100%;
+      flex-grow: 1;
+  }
 
-.opration .edit-icon:hover {
-    color: rgb(0, 42, 255);
-}
+  .nt-header i {
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      flex-basis: 10%;
+  }
 
-.writing {
-    flex-grow: 2;
-}
+  textarea {
+      width: 100%;
+      height: 100%;
+      outline: none;
+      border: none;
+      resize: none;
+      padding: 10px;
+  }
 
-.note textarea {
-    resize: none;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    padding: 9px;
-}
+  /* footer------------ */
 
-.note textarea::placeholder {
-    font-size: .9rem;
-}
+  footer {
+      width: 100vw;
+      background: rgb(11, 11, 11);
+  }
 
+  .footer {
+      max-width: 500px;
+      background: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 auto;
+      padding: 20px 0;
+  }
 
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100vw;
-    background: var(--head-clr);
-    padding: 20px 0;
-    color: var(--txt-clr);
-}
+  .footer span {
+      font-size: 1rem;
+      font-weight: 100;
+  }
 
-.footer h1 {
-    text-transform: capitalize;
-    font-size: 0.9rem;
-    font-weight: lighter;
-    letter-spacing: .2rem;
-
-}
-
-.footer h3 {
-    font-size: 0.8rem;
-    margin-top: 5px;
-    font-weight: 500;
-}
-
-.footer span {
-    text-transform: capitalize;
-    font-size: 0.7rem;
-    margin-top: 10px;
-    font-weight: 100;
-}
-
-
-
-
-/* theme changing  */
-
-body.light_mode .btn {
-    color: var(--txt-clr);
-}
-
-body.light_mode .social_media .theme {
-    border-left: 2px solid rgba(0, 0, 0, 0.294);
-}
-
-body.light_mode .note {
-    border: 1.5px solid rgb(245, 245, 245);
-}
-
-body.light_mode .opration {
-    background: var(--primary-clr);
-    outline: 1px solid red;
-}
-
-body.light_mode textarea {
-    background: rgb(255, 255, 163);
-}
-
-
-
-/* delete custom modal */
-
-
-.dlt-modal {
-    width: 250px;
-    height: 110px;
-    position: absolute;
-    background-color: var(--txt-clr);
-    color: var(--pure-blk);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0) ;
-    pointer-events: auto;
-    transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.dlt-modal span {
-    margin-bottom: 10px;
-}
-
-.dlt-modal button {
-    background: none;
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    font-size: 1.52rem;
-    width: 90px;
-    margin: 0 5px;
-    cursor: pointer;
-
-}
-
-.dlt-modal #dlt-yes {
-    background: red;
-    color: var(--txt-clr);
-}
-
-.dlt-modal #dlt-no {
-    background: rgb(16, 232, 55);
-    color: var(--txt-clr);
-}
+  .footer h3 {
+      font-size: 1rem;
+      margin: 10px 0;
+  }
