@@ -65,7 +65,6 @@ year.innerHTML = newDate;
 
 
 
-
 //------------setting link taget blank
 let flw = document.querySelectorAll("a")
 
