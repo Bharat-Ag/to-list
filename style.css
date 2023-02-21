@@ -18,10 +18,13 @@
   .theme-changed {
       --pure-white: rgb(0, 0, 0);
       --pure-black: rgb(255, 255, 255);
+      --primary-clr: rgb(255, 255, 255);
+
   }
 
   body {
       background: var(--primary-clr);
+      transition: all .4s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .container {
@@ -57,18 +60,19 @@
 
   .header {
       font-size: 1.4rem;
-      padding: 10px 20px;
+      padding: 15px 20px;
       margin: 0 auto;
-      max-width: 550px;
+      max-width: 600px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      font-size: 1.6rem;
+
   }
 
   .branding {
       padding: 0px 6px;
-      font-size: 1.4rem;
   }
 
   .branding a {
@@ -99,6 +103,11 @@
       margin-left: 8px;
       border-left: 1.5px solid rgba(255, 255, 255, 0.2);
       padding-left: 10px;
+  }
+
+  body.theme-changed .thm-btn {
+      border-left: 1.5px solid rgba(0, 0, 0, 0.2);
+
   }
 
   .thm-btn i {
@@ -146,10 +155,7 @@
   }
 
   .add-btn:hover i {
-      color: rgb(255, 47, 123);
       margin: 0 6px 0 5px;
-      transform-origin: center;
-      transform: rotate(45deg);
   }
 
   .add-btn:hover::after {
@@ -168,6 +174,15 @@
       transition: all .9s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
+  body.theme-changed .nt-btn-icon {
+      color: rgb(0, 0, 0);
+  }
+
+
+  body.theme-changed .add-btn span {
+      color: black;
+  }
+
   /* -------note field------- */
   .note-field {
       min-height: 100vh;
@@ -177,11 +192,13 @@
       display: flex;
       align-content: flex-start;
       flex-wrap: wrap;
-      gap: 17px;
+      gap: 20px;
       position: relative;
   }
 
   .note-placeholder {
+      user-select: none;
+      pointer-events: none;
       position: absolute;
       top: 30%;
       left: 50%;
@@ -193,7 +210,7 @@
       border-radius: 7px;
       overflow: hidden;
       width: 280px;
-      height: 200px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -208,6 +225,8 @@
       align-items: center;
       flex-basis: 25%;
       padding: 0 10px 0 20px;
+      color: white;
+
   }
 
   .nt-header h3 {
@@ -235,6 +254,13 @@
       border: none;
       resize: none;
       padding: 10px;
+      transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+  }
+
+
+  body.theme-changed textarea {
+      background: rgb(255, 255, 169);
   }
 
   /* footer------------ */
@@ -253,6 +279,7 @@
       flex-direction: column;
       margin: 0 auto;
       padding: 20px 0;
+      color: white;
   }
 
   .footer span {
@@ -263,4 +290,155 @@
   .footer h3 {
       font-size: 1rem;
       margin: 10px 0;
+  }
+
+  /* ----------------------media quesries */
+
+  @media only screen and (max-width:430px) {
+
+      .adding-container {
+          position: fixed;
+          right: 0;
+          left: 0;
+          bottom: 20%;
+          z-index: 99;
+          margin-top: 0;
+      }
+
+      .add-btn::after {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 2px;
+          height: 100%;
+          width: 90%;
+          background-color: aqua;
+          border-radius: 50px;
+          transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+          z-index: -1;
+      }
+
+      .add-btn:hover::after {
+          background-color: aqua;
+          width: 90%;
+      }
+
+      .add-btn span {
+          display: none;
+      }
+
+      .add-btn:hover i {
+          color: var(--pure-black);
+          margin: 0;
+          transform: rotate(0);
+      }
+
+      .note-field {
+          padding: 25px 50px;
+      }
+
+      .note {
+          flex-grow: 1;
+      }
+
+      .footer span {
+          font-size: .7rem;
+          font-weight: 100;
+      }
+
+      .footer h3 {
+          font-size: .7rem;
+          margin: 10px 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 6px;
+      }
+  }
+
+  @media only screen and (max-width:375px) {
+
+      .header {
+          font-size: 1.5rem;
+      }
+
+      .note-field {
+          padding: 25px;
+      }
+
+      .note {
+          flex-grow: 1;
+      }
+
+      .footer span {
+          font-size: .7rem;
+          font-weight: 100;
+      }
+
+      .footer h3 {
+          font-size: .7rem;
+          margin: 10px 0;
+      }
+
+  }
+
+  @media (min-width:150px) and (max-width:310px) {
+      .follow .media {
+          display: none;
+      }
+
+      .header {
+          font-size: 1.3rem;
+      }
+
+      .note-field {
+          padding: 25px;
+      }
+
+      .footer h3 {
+          font-size: .7rem;
+          margin: 7px 0;
+          gap: 5px;
+      }
+
+      .footer h3 span {
+          font-size: .6rem;
+      }
+
+      .note-placeholder {
+          font-size: 0.9rem;
+          white-space: nowrap;
+      }
+
+  }
+
+  @media only screen and (max-width:149px) {
+      body {
+          overflow: hidden;
+      }
+
+      .adding-container,
+      .note-field {
+          display: none;
+      }
+
+      .header {
+          flex-direction: column;
+          font-size: 1.6rem;
+          gap: 40px;
+      }
+
+      .branding {
+          padding: 0px;
+      }
+
+      .logo {
+          display: none;
+      }
+
+      .footer {
+          padding: 20px 24px;
+          text-align: center;
+      }
   }
