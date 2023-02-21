@@ -1,89 +1,81 @@
-let noteBtn = document.querySelector(".btn");
-let ntPlaceholder = document.querySelector(".nt-placeholder");
 
+let nt_plcHoldr = document.querySelector(".note-placeholder");
 
-let addNewNote = (text = '') => {
+// ----------adding note
+let newNote = (text = '') => {
+    nt_plcHoldr.style.display = "none";
+    let main_cell = document.querySelector(".note-field");
+    let note = document.createElement("div")
 
-    let pDiv = document.querySelector(".nt-container");
-    ntPlaceholder.style.display = "none";
-
-    let note = document.createElement('div');
-    note.classList.add("note");
-    let htmlData = `   
-            <div class="opration">
-                <h3>Title</h3>
-                <div class="alert">
-                      <button class="edit" title="create new note">
-                          <i class=" edit-icon fa-regular fa-pen-to-square"></i>
-                      </button>
-                      <button class="delete" title="delete">
-                          <i class=" del-icon fa-solid fa-trash"></i>
-                      </button>
-                 </div>
-            </div>
-            <div class="writing ">
-                <textarea class="text" spellcheck="true" placeholder="write your notes here.."></textarea>
-            </div>`;
-
+    note.classList.add("note")
+    let htmlData = `
+                <div class="nt-header">
+                    <h3>Title</h3>
+                    <i class="dlt_nt fa-regular fa-trash-can"></i>
+                </div>
+                <textarea name="nt-cell" id="nt-cell"></textarea>    
+    `
     note.insertAdjacentHTML("afterbegin", htmlData);
 
-
-    let delBtn = note.querySelector('.del-icon');
-    delBtn.addEventListener("click", () => {
-
-        // let dltModal = document.querySelector(".dlt-modal");
-        // let modalBtn = dltModal.querySelectorAll("button");
-
-        // dltModal.style.transform = "scale(1)";
-        // dltModal.style.transform = "translate(-50% ,-50%)";
+    let dlt_noteBtn = document.querySelector(".dlt_nt");
 
 
-        // modalBtn.forEach((btn) => {
-        //     btn.addEventListener("click", () => {
-        //         if (btn.id == "dlt-yes") {
-        //             dltModal.style.transform = "scale(0)"
-        //             note.remove()
 
-        //         } else {
-        //             dltModal.style.transform = "scale(0)";
-        //         }
+    let delbtn = note.querySelector('.dlt_nt');
+    delbtn.addEventListener('click', () => {
 
-        //     })
-        // })
-        
-        
-        note.remove()
+        note.remove();
 
-
-        if (pDiv.children.length == 1) {
-            ntPlaceholder.style.display = "block";
+        if (main_cell.children.length == 1) {
+            nt_plcHoldr.style.display = "block";
         }
     })
 
-    pDiv.appendChild(note);
+
+    main_cell.appendChild(note);
 
 }
-noteBtn.addEventListener("click", () =>
-    addNewNote()
-);
 
 
+let nt_btn = document.querySelector(".adding-note")
 
-
-// ---------------theme changing
-
-let themeBtn = document.querySelector(".thm-btn")
-let body = document.querySelector("body");
-
-themeBtn.addEventListener("click", () => {
-
-    body.classList.toggle("light_mode");
-    themeBtn.classList.toggle("fa-moon");
-
+nt_btn.addEventListener("click", () => {
+    newNote();
 })
 
-// ---------------dynamic footer year 
 
-let year = document.querySelector(".year");
+// // ---------------theme changing
+
+// let themeBtn = document.querySelector(".thm-btn")
+// let body = document.querySelector("body");
+// themeBtn.addEventListener("click", () => {
+
+//     body.classList.toggle("light_mode")
+//     themeBtn.classList.toggle("fa-moon")
+
+// })
+
+
+
+
+
+
+
+
+
+
+// // ---------------dynamic footer year 
+
+let year = document.querySelector("#cc-date");
 let newDate = new Date().getFullYear();
 year.innerHTML = newDate;
+
+
+
+
+//------------setting link taget blank
+let flw = document.querySelectorAll("a")
+
+flw.forEach((ele) => {
+    ele.setAttribute("target", "_blank")
+})
