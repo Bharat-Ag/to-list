@@ -4,9 +4,8 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Sora', sans-serif;   
+      font-family: 'Sora', sans-serif;
       -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-
   }
 
   :root {
@@ -24,17 +23,7 @@
 
   }
 
-  body {
-      background: var(--primary-clr);
-      transition: all .4s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .container {
-      min-height: 100vh;
-      color: var(--pure-white);
-      background: none;
-  }
-
+  /* ----------universal decltn */
   a {
       text-decoration: none;
       color: var(--pure-white);
@@ -44,6 +33,11 @@
       list-style: none;
   }
 
+  input {
+      outline: none;
+      border: none;
+  }
+
   button {
       outline: none;
       border: none;
@@ -51,6 +45,26 @@
       cursor: pointer;
       color: var(--pure-white);
   }
+
+  /*-------------main stylying */
+
+  body {
+      background: var(--primary-clr);
+      transition: all .4s cubic-bezier(0.19, 1, 0.22, 1);
+
+  }
+
+  .container {
+      color: var(--pure-white);
+      height: 100vh;
+      background: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+  }
+
 
   .navbar {
       width: 100vw;
@@ -70,6 +84,7 @@
       align-items: center;
       justify-content: space-between;
       font-size: 1.6rem;
+
   }
 
   .branding {
@@ -122,6 +137,7 @@
       justify-content: flex-end;
       margin-top: 20px;
       padding-right: 30px;
+      width: 100%;
   }
 
   .adding-note {
@@ -184,10 +200,12 @@
       color: black;
   }
 
+
+
   /* -------note field------- */
   .note-field {
-      min-height: 100vh;
-      max-width: 100vw;
+      /* min-height: 100%; */
+      width: 100vw;
       margin-top: 40px;
       padding: 25px 80px;
       display: flex;
@@ -195,13 +213,15 @@
       flex-wrap: wrap;
       gap: 20px;
       position: relative;
+      flex-grow: 1;
+      overflow-y: scroll;
   }
 
   .note-placeholder {
       user-select: none;
       pointer-events: none;
       position: absolute;
-      top: 30%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       opacity: 0.4;
@@ -211,7 +231,7 @@
       border-radius: 7px;
       overflow: hidden;
       width: 280px;
-      height: 180px;
+      height: 190px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -225,17 +245,20 @@
       justify-content: space-around;
       align-items: center;
       flex-basis: 25%;
-      padding: 0 10px 0 20px;
+      padding: 0 0px 0 15px;
       color: white;
-
   }
 
   .nt-header h3 {
-      letter-spacing: .2rem;
       font-weight: bold;
       cursor: default;
       width: 100%;
       flex-grow: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 15px;
+
   }
 
   .nt-header i {
@@ -245,7 +268,12 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      flex-basis: 10%;
+      flex-basis: 15%;
+  }
+
+  .nt-header i:hover,
+  .nt-header i:active {
+      color: red;
   }
 
   textarea {
@@ -262,6 +290,21 @@
 
   body.theme-changed textarea {
       background: rgb(255, 255, 169);
+  }
+
+  .nt-date {
+      width: 100%;
+      padding: 7px 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 15px;
+      gap: 3px;
+  }
+
+  .nt-date span {
+      font-size: .8rem;
+      opacity: .7;
   }
 
   /* footer------------ */
@@ -293,7 +336,118 @@
       margin: 10px 0;
   }
 
-  /* ----------------------media quesries */
+  /* popup box---------------// */
+
+  .title-input {
+      width: 100vw;
+      height: 100vh;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.437);
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+  }
+
+  .title-input.popupShow {
+      opacity: 1;
+      pointer-events: auto;
+  }
+
+  .title-div {
+      max-width: 320px;
+      width: 100%;
+      height: 163px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 5px;
+  }
+
+  .title-div .header,
+  .title-div i {
+      color: var(--pure-black);
+      padding: 7px 10px 7px 18px;
+  }
+
+  .title-div i {
+      color: red;
+  }
+
+  .title-div .header {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.286);
+  }
+
+  .title-div form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      flex-grow: 1;
+      gap: 15px;
+      padding: 0 20px;
+      margin-top: 10px;
+  }
+
+
+  .title-div form input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid rgba(0, 0, 255, 0);
+      border-radius: 5px;
+      position: relative;
+  }
+
+  .title-div form .popup-placeholder {
+      font-size: 13.7px;
+      position: absolute;
+      top: 45%;
+      left: 26.3%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: rgba(0, 0, 0, 0.6);
+      transition: all .5s cubic-bezier(0.23, 1, 0.320, 1);
+      opacity: 1;
+  }
+
+  .title-div form input:focus~.popup-placeholder,
+  .title-div form input:valid~.popup-placeholder {
+      font-size: 10px;
+      top: 33%;
+      padding: 0 5px;
+  }
+
+  .title-div form button {
+      color: white;
+      padding: 10px 40px;
+      background: rgb(163, 83, 255);
+      border-radius: 5px;
+      transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+
+  .title-div form button:active {
+      background: rgb(140, 71, 220);
+      scale: .99;
+  }
+
+  .title-div form input:focus {
+      border: 2px solid rgb(0, 128, 255);
+  }
+
+
+
+
+
+
+
+
+  /* media quesries */
 
   @media only screen and (max-width:430px) {
 
@@ -362,6 +516,7 @@
 
       .header {
           font-size: 1.5rem;
+
       }
 
       .note-field {
@@ -411,7 +566,6 @@
           font-size: 0.9rem;
           white-space: nowrap;
       }
-
   }
 
   @media only screen and (max-width:149px) {
