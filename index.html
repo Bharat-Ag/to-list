@@ -14,17 +14,17 @@
 <body>
     <!-- --------------------input for title -->
 
-    <div class="title-input" style="position:fixed;">
+    <div class="title-pupUp" style="position:fixed;">
         <div class="title-div">
             <div class="header">
                 <span class="note-title">Add Title for note</span>
-                <button class="close-title-btn" onclick="close_title_btn()">
+                <button type="submit" class="close-title-btn">
                     <i class="fa-solid fa-ban"></i>
                 </button>
             </div>
             <form action="#">
                 <!-- <label for=""></label> -->
-                <input type="text" maxlength="25" value="" id="title-input" autocomplete="off">
+                <input type="text" maxlength="25" id="title-input" autocomplete="off">
                 <label class="popup-placeholder" for="title-input">Enter note title</label>
                 <button id="title-note-btn">Add</button>
             </form>
