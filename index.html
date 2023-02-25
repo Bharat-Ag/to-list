@@ -12,10 +12,29 @@
 </head>
 
 <body>
+    <!-- --------------------input for title -->
+
+    <div class="title-input" style="position:fixed;">
+        <div class="title-div">
+            <div class="header">
+                <span class="note-title">Add Title for note</span>
+                <button class="close-title-btn" onclick="close_title_btn()">
+                    <i class="fa-solid fa-ban"></i>
+                </button>
+            </div>
+            <form action="#">
+                <!-- <label for=""></label> -->
+                <input type="text" maxlength="25" value="" id="title-input" autocomplete="off">
+                <label class="popup-placeholder" for="title-input">Enter note title</label>
+                <button id="title-note-btn">Add</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- main-container--------- -->
 
     <div class="container">
-
-
         <!---------- Navbar-->
 
         <div class="navbar">
@@ -63,12 +82,13 @@
             </div>
         </div>
 
+
+
         <!---------- Note Field -->
 
 
         <div class="note-field">
             <span class="note-placeholder">Create New Note</span>
-
         </div>
 
         <!---------- footer -->
@@ -82,6 +102,7 @@
                 <span>&copy; <span id="cc-date">2000</span></span>
             </div>
         </footer>
+
     </div>
 
     <script src="script.js"></script>
