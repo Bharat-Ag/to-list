@@ -338,7 +338,7 @@
 
   /* popup box---------------// */
 
-  .title-input {
+  .title-pupUp{
       width: 100vw;
       height: 100vh;
       z-index: 100;
@@ -348,7 +348,7 @@
       user-select: none;
   }
 
-  .title-input.popupShow {
+  .title-pupUp.popupShow {
       opacity: 1;
       pointer-events: auto;
   }
