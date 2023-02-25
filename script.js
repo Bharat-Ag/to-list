@@ -1,26 +1,23 @@
 
+let titleBox = document.querySelector(".title-pupUp")
+let closeIcon = document.querySelector(".close-title-btn");
+let titleValue = document.querySelector("#title-input");
+
 // add title popup animation------
-let titleBox = document.querySelector(".title-input")
-let close_title_btn = () => {
+closeIcon.addEventListener("click", () => {
     titleBox.classList.add("close-btn-active");
     titleBox.classList.remove("popupShow");
-}
+
+    titleValue.value = "";
+})
 
 
 // adding title to input field replaces the note title--
 let titleSubmit = document.querySelector("#title-note-btn");
-
-let nt_date = document.querySelector(".nt-date-dt");
-let nt_month = document.querySelector(".nnt-date-mnth");
-let nt_year = document.querySelector(".nt-date-yr");
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-];
-
-
-let titleValue = document.querySelector("#title-input");
 titleSubmit.addEventListener("click", (e) => {
     e.preventDefault()
     let noteTitle = titleValue.value;
@@ -31,23 +28,24 @@ titleSubmit.addEventListener("click", (e) => {
         nt_date = dateObj.getDate();
         nt_year = dateObj.getFullYear();
 
-        // let noteInfo = {
-        //     title: noteTitle,
-        //     date: `${nt_month} ,${nt_date} ,${nt_year}`
-        // }
-        // console.log(noteInfo);
+        let noteInfo = {
+            title: noteTitle,
+            date: `${nt_month} ,${nt_date} ,${nt_year}`
+        }
+    }
+    if (noteTitle.length == 0) {
+        alert("title must be entered")
+    } else {
+        newNote()
+        titleBox.classList.remove("popupShow");
+        titleValue.value = "";
+
+
     }
 
-    titleBox.classList.remove("popupShow");
-
-
-    newNote()
     // return true;
 
 })
-
-
-
 
 let updateLSData = () => {
     let textAreaData = document.querySelectorAll("textarea")
@@ -56,7 +54,7 @@ let updateLSData = () => {
     textAreaData.forEach((note) => {
         return notes.push(note.value);
     })
-    
+
     localStorage.setItem('notes', JSON.stringify(notes))
 }
 
@@ -81,14 +79,14 @@ let newNote = (text = '') => {
     note.classList.add("note")
     let htmlData = `
                 <div class="nt-header">
-                    <h3>Title</h3>
+                    <h3>${titleValue.title}</h3>
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
                 <textarea name="nt-cell" id="nt-cell"></textarea>
                 <div class="nt-date">
-                    <span class="nt-date-mnth">march</span>
-                    <span class="nt-date-dt">23</span>
-                    <span class="nt-date-yr">2013</span>
+                    <span class="nt-date-mnth">${nt_month}</span>
+                    <span class="nt-date-dt">${nt_date}</span>
+                    <span class="nt-date-yr">${nt_year}</span>
                 </div>    
     `
     note.insertAdjacentHTML("afterbegin", htmlData);
@@ -134,46 +132,14 @@ if (notes) {
 
 
 
-// --f -------------adding btn funtionality
+// ---------------adding btn funtionality
 
 
 let nt_btn = document.querySelector(".adding-note")
 
 nt_btn.addEventListener("click", () => {
     titleBox.classList.add("popupShow")
-    // newNote();
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
