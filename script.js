@@ -7,53 +7,18 @@ let titleValue = document.querySelector("#title-input");
 closeIcon.addEventListener("click", () => {
     titleBox.classList.add("close-btn-active");
     titleBox.classList.remove("popupShow");
-
     titleValue.value = "";
 })
 
 
-// adding title to input field replaces the note title--
-let titleSubmit = document.querySelector("#title-note-btn");
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-
-titleSubmit.addEventListener("click", (e) => {
-    e.preventDefault()
-    let noteTitle = titleValue.value;
-
-    if (noteTitle) {
-        let dateObj = new Date();
-        nt_month = monthNames[dateObj.getMonth()];
-        nt_date = dateObj.getDate();
-        nt_year = dateObj.getFullYear();
-
-        let noteInfo = {
-            title: noteTitle,
-            date: `${nt_month} ,${nt_date} ,${nt_year}`
-        }
-
-        tTl = noteInfo.title;
-    }
-    if (noteTitle.length == 0) {
-        alert("Title is required")
-    } else {
-        newNote()
-        titleBox.classList.remove("popupShow");
-        titleValue.value = "";
-    }
-
-})
 
 let updateLSData = () => {
-    let textAreaData = document.querySelectorAll("textarea")
+    let textAreaData = document.querySelectorAll("textarea");
     let notes = [];
 
     textAreaData.forEach((note) => {
         return notes.push(note.value);
     })
-
-    localStorage.setItem('notes', JSON.stringify(notes))
 }
 
 
@@ -75,14 +40,12 @@ let newNote = (text = '') => {
     note.classList.add("note")
     let htmlData = `
                 <div class="nt-header">
-                    <h3>8</h3>
+                    <h3>Title</h3>
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
-                <textarea name="nt-cell" id="nt-cell"></textarea>
+                <textarea name="nt-cell" id="nt-cell" placeholder = "enter the info"></textarea>
                 <div class="nt-date">
-                    <span class="nt-date-mnth">mm</span>
-                    <span class="nt-date-dt">dd</span>
-                    <span class="nt-date-yr">yyyy</span>
+                    <span id="nt-date">${note.date}</span>
                 </div>    
     `
     note.insertAdjacentHTML("afterbegin", htmlData);
@@ -116,6 +79,39 @@ let newNote = (text = '') => {
 }
 
 
+// adding title to input field replaces the note title--
+let titleSubmit = document.querySelector("#title-note-btn");
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+titleSubmit.addEventListener("click", (e) => {
+    e.preventDefault()
+    let noteTitle = titleValue.value;
+
+    if (noteTitle.length == 0) {
+        alert("Title is required")
+    } else {
+        newNote()
+        titleBox.classList.remove("popupShow");
+        titleValue.value = "";
+    }
+
+
+    let dateObj = new Date();
+    nt_month = monthNames[dateObj.getMonth()]
+    nt_date = dateObj.getDate()
+    nt_year = dateObj.getFullYear()
+
+    if (noteTitle) {
+
+        let noteInfo = {
+            title: noteTitle,
+            date: ` ${nt_month} ${nt_date} ,${nt_year}`
+        }
+        console.log(noteInfo);
+    }
+})
 
 // -------getting data from local server
 
@@ -157,11 +153,9 @@ let newDate = new Date().getFullYear();
 year.innerHTML = newDate;
 
 
-
-
 //------------setting link taget blank
 let flw = document.querySelectorAll("a")
 
 flw.forEach((ele) => {
-    ele.setAttribute("target", "_blank")
+    ele.setAttribute("target", "_blank");
 })
