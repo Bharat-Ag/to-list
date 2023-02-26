@@ -32,18 +32,16 @@ titleSubmit.addEventListener("click", (e) => {
             title: noteTitle,
             date: `${nt_month} ,${nt_date} ,${nt_year}`
         }
+
+        tTl = noteInfo.title;
     }
     if (noteTitle.length == 0) {
-        alert("title must be entered")
+        alert("Title is required")
     } else {
         newNote()
         titleBox.classList.remove("popupShow");
         titleValue.value = "";
-
-
     }
-
-    // return true;
 
 })
 
@@ -57,8 +55,6 @@ let updateLSData = () => {
 
     localStorage.setItem('notes', JSON.stringify(notes))
 }
-
-
 
 
 let nt_plcHoldr = document.querySelector(".note-placeholder");
@@ -79,14 +75,14 @@ let newNote = (text = '') => {
     note.classList.add("note")
     let htmlData = `
                 <div class="nt-header">
-                    <h3>${titleValue.title}</h3>
+                    <h3>8</h3>
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
                 <textarea name="nt-cell" id="nt-cell"></textarea>
                 <div class="nt-date">
-                    <span class="nt-date-mnth">${nt_month}</span>
-                    <span class="nt-date-dt">${nt_date}</span>
-                    <span class="nt-date-yr">${nt_year}</span>
+                    <span class="nt-date-mnth">mm</span>
+                    <span class="nt-date-dt">dd</span>
+                    <span class="nt-date-yr">yyyy</span>
                 </div>    
     `
     note.insertAdjacentHTML("afterbegin", htmlData);
@@ -96,7 +92,6 @@ let newNote = (text = '') => {
 
 
     let textArea = note.querySelector("textarea");
-
     textArea.value = text;
     textArea.addEventListener("change", (event) => {
         const value = event.target.value;
@@ -129,7 +124,6 @@ const notes = JSON.parse(localStorage.getItem("notes"))
 if (notes) {
     notes.forEach((note) => newNote(note))
 }
-
 
 
 // ---------------adding btn funtionality
