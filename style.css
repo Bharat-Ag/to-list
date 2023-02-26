@@ -128,6 +128,7 @@
 
   .thm-btn i {
       cursor: pointer;
+      width: 35px;
   }
 
   /* -----btn desgn-------- */
@@ -285,9 +286,7 @@
       resize: none;
       padding: 10px;
       transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-
   }
-
 
   body.theme-changed textarea {
       background: rgb(255, 255, 169);
@@ -306,6 +305,7 @@
   .nt-date span {
       font-size: .8rem;
       opacity: .7;
+      color: white;
   }
 
   /* footer------------ */
