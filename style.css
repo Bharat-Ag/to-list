@@ -258,7 +258,8 @@
       overflow: hidden;
       text-overflow: ellipsis;
       padding-right: 15px;
-
+      font-size: .9rem;
+      text-transform: capitalize;
   }
 
   .nt-header i {
@@ -338,7 +339,7 @@
 
   /* popup box---------------// */
 
-  .title-pupUp{
+  .title-pupUp {
       width: 100vw;
       height: 100vh;
       z-index: 100;
@@ -399,7 +400,7 @@
   .title-div form input {
       width: 100%;
       padding: 10px;
-      border: 2px solid rgba(0, 0, 255, 0);
+      border: 2px solid rgb(0, 128, 255);
       border-radius: 5px;
       position: relative;
   }
@@ -407,20 +408,19 @@
   .title-div form .popup-placeholder {
       font-size: 13.7px;
       position: absolute;
-      top: 45%;
-      left: 26.3%;
-      transform: translate(-50%, -50%);
-      background: white;
-      color: rgba(0, 0, 0, 0.6);
-      transition: all .5s cubic-bezier(0.23, 1, 0.320, 1);
-      opacity: 1;
-  }
-
-  .title-div form input:focus~.popup-placeholder,
-  .title-div form input:valid~.popup-placeholder {
       font-size: 10px;
       top: 33%;
       padding: 0 5px;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: rgb(0, 128, 255);
+      transition: all 1.5s cubic-bezier(0.23, 1, 0.320, 1), color .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+      opacity: 1;
+  }
+
+  .title-div form input:focus~.popup-placeholder {
+      color: rgb(163, 83, 255);
+      transform: translate(-90%, -50%);
   }
 
   .title-div form button {
@@ -437,7 +437,7 @@
   }
 
   .title-div form input:focus {
-      border: 2px solid rgb(0, 128, 255);
+      border: 2px solid rgb(163, 83, 255);
   }
 
 
