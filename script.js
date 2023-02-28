@@ -20,7 +20,7 @@ let updateLSData = () => {
         return notes.push(note.value);
     })
     
-   localStorage.setItem("notes", JSON.stringify(notes))
+   localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 
