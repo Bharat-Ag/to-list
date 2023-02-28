@@ -27,7 +27,7 @@ let updateLSData = () => {
 let nt_plcHoldr = document.querySelector(".note-placeholder");
 
 // ----------adding note
-let newNote = (text = '') => {
+let newNote = (title = 'Title', text = '') => {
 
     // if note cell is empty the placeholder will be displayed----
 
@@ -42,12 +42,12 @@ let newNote = (text = '') => {
     note.classList.add("note")
     let htmlData = `
                 <div class="nt-header">
-                    <h3>Title</h3>
+                    <h3>${title}</h3>
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
                 <textarea name="nt-cell" id="nt-cell" placeholder = "enter the info"></textarea>
                 <div class="nt-date">
-                    <span id="nt-date">${note.date}</span>
+                    <span id="nt-date">${new Date().toString()}</span>
                 </div>    
     `
     note.insertAdjacentHTML("afterbegin", htmlData);
@@ -94,7 +94,7 @@ titleSubmit.addEventListener("click", (e) => {
     if (noteTitle.length == 0) {
         alert("Title is required")
     } else {
-        newNote()
+        newNote(noteTitle)
         titleBox.classList.remove("popupShow");
         titleValue.value = "";
     }
