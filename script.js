@@ -19,6 +19,8 @@ let updateLSData = () => {
     textAreaData.forEach((note) => {
         return notes.push(note.value);
     })
+    
+   localStorage.setItem("notes", JSON.stringify(notes))
 }
 
 
