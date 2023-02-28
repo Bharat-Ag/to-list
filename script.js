@@ -19,15 +19,15 @@ let updateLSData = () => {
     textAreaData.forEach((note) => {
         return notes.push(note.value);
     })
-    
-   localStorage.setItem('notes', JSON.stringify(notes));
+
+    localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 
 let nt_plcHoldr = document.querySelector(".note-placeholder");
 
 // ----------adding note
-let newNote = (title = 'Title', text = '') => {
+let newNote = (text = '') => {
 
     // if note cell is empty the placeholder will be displayed----
 
@@ -37,17 +37,28 @@ let newNote = (title = 'Title', text = '') => {
     // main note cell adding on adding button to be click--
 
     let main_cell = document.querySelector(".note-field");
-    let note = document.createElement("div")
+    let note = document.createElement("div");
+
+
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    let dateObj = new Date();
+    nt_month = monthNames[dateObj.getMonth()]
+    nt_date = dateObj.getDate()
+    nt_year = dateObj.getFullYear()
 
     note.classList.add("note")
     let htmlData = `
                 <div class="nt-header">
-                    <h3>${title}</h3>
+                    <h3>title</h3>
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
                 <textarea name="nt-cell" id="nt-cell" placeholder = "enter the info"></textarea>
                 <div class="nt-date">
-                    <span id="nt-date">${new Date().toString()}</span>
+                    <span id="nt-date">${nt_month}</span>
+                    <span id="nt-date">${nt_date} ,</span>
+                    <span id="nt-date">${nt_year}</span>
                 </div>    
     `
     note.insertAdjacentHTML("afterbegin", htmlData);
@@ -83,8 +94,7 @@ let newNote = (title = 'Title', text = '') => {
 
 // adding title to input field replaces the note title--
 let titleSubmit = document.querySelector("#title-note-btn");
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 
 
 titleSubmit.addEventListener("click", (e) => {
@@ -94,25 +104,21 @@ titleSubmit.addEventListener("click", (e) => {
     if (noteTitle.length == 0) {
         alert("Title is required")
     } else {
-        newNote(noteTitle)
+        newNote()
         titleBox.classList.remove("popupShow");
         titleValue.value = "";
     }
 
 
-    let dateObj = new Date();
-    nt_month = monthNames[dateObj.getMonth()]
-    nt_date = dateObj.getDate()
-    nt_year = dateObj.getFullYear()
 
-    if (noteTitle) {
+    // if (noteTitle) {
 
-        let noteInfo = {
-            title: noteTitle,
-            date: ` ${nt_month} ${nt_date} ,${nt_year}`
-        }
-        console.log(noteInfo);
-    }
+    //     let noteInfo = {
+    //         title: noteTitle,
+    //         date: ` ${nt_month} ${nt_date} ,${nt_year}`
+    //     }
+    //     console.log(noteInfo);
+    // }
 })
 
 // -------getting data from local server
@@ -145,6 +151,7 @@ thmBtn.addEventListener('click', () => {
 
     body.classList.toggle("theme-changed")
     thmLogo.classList.toggle("fa-moon")
+    cooKy();
 })
 
 
@@ -161,3 +168,22 @@ let flw = document.querySelectorAll("a")
 flw.forEach((ele) => {
     ele.setAttribute("target", "_blank");
 })
+
+
+// ------------storing theme changed input
+
+let getTheme = localStorage.getItem("mode");
+
+if (getTheme && getTheme === "theme-changed") {
+
+    body.classList.add("theme-changed");
+}
+
+let cooKy = () => {
+    if (!body.classList.contains("theme-changed")) {
+        return localStorage.setItem("mode", "normal-theme")
+    }
+    else {
+        localStorage.setItem("mode", "theme-changed")
+    }
+}
