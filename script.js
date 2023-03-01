@@ -1,5 +1,4 @@
-
-let titleBox = document.querySelector(".title-pupUp")
+let titleBox = document.querySelector(".title-pupUp");
 let closeIcon = document.querySelector(".close-title-btn");
 let titleValue = document.querySelector("#title-input");
 
@@ -33,13 +32,6 @@ let newNote = (text = '') => {
 
     nt_plcHoldr.style.display = "none";
 
-
-    // main note cell adding on adding button to be click--
-
-    let main_cell = document.querySelector(".note-field");
-    let note = document.createElement("div");
-
-
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -48,13 +40,17 @@ let newNote = (text = '') => {
     nt_date = dateObj.getDate()
     nt_year = dateObj.getFullYear()
 
+    // main note cell adding on adding button to be click--
+
+    let main_cell = document.querySelector(".note-field");
+    let note = document.createElement("div");
     note.classList.add("note")
     let htmlData = `
                 <div class="nt-header">
                     <h3>title</h3>
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
-                <textarea name="nt-cell" id="nt-cell" placeholder = "enter the info"></textarea>
+                <textarea name="nt-cell" id="nt-cell" placeholder = "enter the info" spellcheck="false"></textarea>
                 <div class="nt-date">
                     <span id="nt-date">${nt_month}</span>
                     <span id="nt-date">${nt_date} ,</span>
@@ -69,8 +65,10 @@ let newNote = (text = '') => {
 
     let textArea = note.querySelector("textarea");
     textArea.value = text;
-    textArea.addEventListener("change", (event) => {
+
+    textArea.addEventListener("input", (event) => {
         const value = event.target.value;
+        console.log(value);
         updateLSData();
     });
 
@@ -95,8 +93,6 @@ let newNote = (text = '') => {
 // adding title to input field replaces the note title--
 let titleSubmit = document.querySelector("#title-note-btn");
 
-
-
 titleSubmit.addEventListener("click", (e) => {
     e.preventDefault()
     let noteTitle = titleValue.value;
@@ -108,23 +104,13 @@ titleSubmit.addEventListener("click", (e) => {
         titleBox.classList.remove("popupShow");
         titleValue.value = "";
     }
-
-
-
-    // if (noteTitle) {
-
-    //     let noteInfo = {
-    //         title: noteTitle,
-    //         date: ` ${nt_month} ${nt_date} ,${nt_year}`
-    //     }
-    //     console.log(noteInfo);
-    // }
 })
 
 // -------getting data from local server
 
 
-const notes = JSON.parse(localStorage.getItem("notes"))
+const notes = JSON.parse(localStorage.getItem("notes"));
+
 if (notes) {
     notes.forEach((note) => newNote(note))
 }
@@ -140,17 +126,15 @@ nt_btn.addEventListener("click", () => {
 })
 
 
-
 // ---------------theme changing
 
 let thmBtn = document.querySelector(".thm-btn")
 let body = document.querySelector("body")
+let thmLogo = thmBtn.querySelector(".fa-sun");
+
 thmBtn.addEventListener('click', () => {
-
-    let thmLogo = thmBtn.querySelector(".fa-sun")
-
     body.classList.toggle("theme-changed")
-    thmLogo.classList.toggle("fa-moon")
+    thmLogo.classList.toggle("fa-moon");
     cooKy();
 })
 
@@ -177,6 +161,7 @@ let getTheme = localStorage.getItem("mode");
 if (getTheme && getTheme === "theme-changed") {
 
     body.classList.add("theme-changed");
+    thmLogo.classList.toggle("fa-moon");
 }
 
 let cooKy = () => {
