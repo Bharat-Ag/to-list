@@ -9,25 +9,44 @@ closeIcon.addEventListener("click", () => {
     titleValue.value = "";
 })
 
-
-
 let updateLSData = () => {
     let textAreaData = document.querySelectorAll("textarea");
-    let notes = [];
+    let data = [];
 
     textAreaData.forEach((note) => {
-        return notes.push(note.value);
+        return data.push(note.value);
     })
 
-    localStorage.setItem('notes', JSON.stringify(notes));
+    if (data.length === 0) {
+        localStorage.removeItem("notes")
+    }
+    else {
+        localStorage.setItem('notes', JSON.stringify(data));
+
+    }
 }
 
+// taking title from using ----------
+
+let titleSubmit = document.querySelector("#title-submit-btn");
+
+titleSubmit.addEventListener("click", (e) => {
+    e.preventDefault()
+    let noteTitle = titleValue.value;
+
+    if (noteTitle.length == 0) {
+        alert("Title is required")
+    } else {
+        newNote()
+        titleBox.classList.remove("popupShow");
+        titleValue.value = "";
+    }
+})
 
 let nt_plcHoldr = document.querySelector(".note-placeholder");
 
-// ----------adding note
+// ----------adding note  funtion start
 let newNote = (text = '') => {
-
     // if note cell is empty the placeholder will be displayed----
 
     nt_plcHoldr.style.display = "none";
@@ -47,7 +66,7 @@ let newNote = (text = '') => {
     note.classList.add("note")
     let htmlData = `
                 <div class="nt-header">
-                    <h3>title</h3>
+                    <h3>Note</h3>
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
                 <textarea name="nt-cell" id="nt-cell" placeholder = "enter the info" spellcheck="false"></textarea>
@@ -67,8 +86,7 @@ let newNote = (text = '') => {
     textArea.value = text;
 
     textArea.addEventListener("input", (event) => {
-        const value = event.target.value;
-        console.log(value);
+        let value = event.target.value;
         updateLSData();
     });
 
@@ -87,32 +105,22 @@ let newNote = (text = '') => {
     })
 
     main_cell.appendChild(note);
+    updateLSData();
 }
+
+// ----------adding note  funtion end-----------
 
 
 // adding title to input field replaces the note title--
-let titleSubmit = document.querySelector("#title-note-btn");
 
-titleSubmit.addEventListener("click", (e) => {
-    e.preventDefault()
-    let noteTitle = titleValue.value;
-
-    if (noteTitle.length == 0) {
-        alert("Title is required")
-    } else {
-        newNote()
-        titleBox.classList.remove("popupShow");
-        titleValue.value = "";
-    }
-})
 
 // -------getting data from local server
 
 
-const notes = JSON.parse(localStorage.getItem("notes"));
+const LSnotes = JSON.parse(localStorage.getItem("notes"));
 
-if (notes) {
-    notes.forEach((note) => newNote(note))
+if (LSnotes) {
+    LSnotes.forEach((lsnote) => newNote(lsnote))
 }
 
 
