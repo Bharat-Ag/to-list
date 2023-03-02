@@ -8,23 +8,22 @@ closeIcon.addEventListener("click", () => {
     titleBox.classList.remove("popupShow");
     titleValue.value = "";
 })
+// taking title from using ----------
 
-let updateLSData = () => {
-    let textAreaData = document.querySelectorAll("textarea");
-    let data = [];
+// let titleSubmit = document.querySelector("#title-submit-btn");
 
-    textAreaData.forEach((note) => {
-        return data.push(note.value);
-    })
+// titleSubmit.addEventListener("click", (e) => {
+//     e.preventDefault()
+//     let noteTitle = titleValue.value;
 
-    if (data.length === 0) {
-        localStorage.removeItem("notes")
-    }
-    else {
-        localStorage.setItem('notes', JSON.stringify(data));
-
-    }
-}
+//     if (noteTitle.length == 0) {
+//         alert("Title is required")
+//     } else {
+//         newNote()
+//         titleBox.classList.remove("popupShow");
+//         titleValue.value = "";
+//     }
+// })
 
 // taking title from using ----------
 
@@ -51,14 +50,6 @@ let newNote = (text = '') => {
 
     nt_plcHoldr.style.display = "none";
 
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-    let dateObj = new Date();
-    nt_month = monthNames[dateObj.getMonth()]
-    nt_date = dateObj.getDate()
-    nt_year = dateObj.getFullYear()
-
     // main note cell adding on adding button to be click--
 
     let main_cell = document.querySelector(".note-field");
@@ -70,11 +61,7 @@ let newNote = (text = '') => {
                     <i class="dlt_nt fa-regular fa-trash-can"></i>
                 </div>
                 <textarea name="nt-cell" id="nt-cell" placeholder = "enter the info" spellcheck="false"></textarea>
-                <div class="nt-date">
-                    <span id="nt-date">${nt_month}</span>
-                    <span id="nt-date">${nt_date} ,</span>
-                    <span id="nt-date">${nt_year}</span>
-                </div>    
+                   
     `
     note.insertAdjacentHTML("afterbegin", htmlData);
 
@@ -130,7 +117,9 @@ if (LSnotes) {
 let nt_btn = document.querySelector(".adding-note")
 
 nt_btn.addEventListener("click", () => {
-    titleBox.classList.add("popupShow")
+    // titleBox.classList.add("popupShow")
+
+    newNote()
 })
 
 
