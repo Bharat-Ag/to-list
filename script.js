@@ -8,6 +8,23 @@ closeIcon.addEventListener("click", () => {
     titleBox.classList.remove("popupShow");
     titleValue.value = "";
 })
+
+let updateLSData = () => {
+    let textAreaData = document.querySelectorAll("textarea");
+    let data = [];
+    textAreaData.forEach((note) => {
+        return data.push(note.value);
+    })
+
+    if (data.length === 0) {
+        localStorage.removeItem("notes")
+    }
+    else {
+        localStorage.setItem('notes', JSON.stringify(data));
+    }
+}
+
+
 // taking title from using ----------
 
 // let titleSubmit = document.querySelector("#title-submit-btn");
@@ -26,21 +43,6 @@ closeIcon.addEventListener("click", () => {
 // })
 
 // taking title from using ----------
-
-let titleSubmit = document.querySelector("#title-submit-btn");
-
-titleSubmit.addEventListener("click", (e) => {
-    e.preventDefault()
-    let noteTitle = titleValue.value;
-
-    if (noteTitle.length == 0) {
-        alert("Title is required")
-    } else {
-        newNote()
-        titleBox.classList.remove("popupShow");
-        titleValue.value = "";
-    }
-})
 
 let nt_plcHoldr = document.querySelector(".note-placeholder");
 
@@ -118,7 +120,6 @@ let nt_btn = document.querySelector(".adding-note")
 
 nt_btn.addEventListener("click", () => {
     // titleBox.classList.add("popupShow")
-
     newNote()
 })
 
